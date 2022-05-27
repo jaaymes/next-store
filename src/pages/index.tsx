@@ -84,7 +84,7 @@ const Home: NextPage = () => {
         <div className=" grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
           {products.slice(firstContentIndex, lastContentIndex).map(product => {
             return (
-              <ProductItem description={product.description} handleOpenDetail={handleOpenDetail} id={product.id} handleAddProduct={handleAddProduct} image={product.image} name={product.title} key={product.id} price={product.price} />
+              <ProductItem product={product} handleOpenDetail={handleOpenDetail} handleAddProduct={handleAddProduct} key={product.id} />
             )
           })
           }
