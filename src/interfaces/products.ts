@@ -13,11 +13,13 @@ export interface IProducts {
 }
 
 export interface IProductItem {
-  id: number
-  image: string
-  name: string
-  price: number
-  description: string
+  product: {
+    id: number
+    image: string
+    title: string
+    price: number
+    description: string
+  }
   handleAddProduct: (item: ICartItem) => void
   handleOpenDetail: (item: ICartItem) => void
 }

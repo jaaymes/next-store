@@ -3,26 +3,26 @@ import { useCart } from "@hooks/useCart";
 import { IProductItem } from "@interfaces/products";
 
 
-export function ProductItem({ id, image, name, price, handleAddProduct, description, handleOpenDetail }: IProductItem) {
-  const { isOpenCard, setIsCartOpen } = useCart()
-  const product = {
-    id,
-    name,
-    image,
-    price,
+export function ProductItem({ product, handleAddProduct, handleOpenDetail }: IProductItem) {
+  const { setIsCartOpen } = useCart()
+  const productItem = {
+    id: product.id,
+    name: product.title,
+    image: product.image,
+    price: product.price,
     quantity: 1,
-    description
+    description: product.description
   }
   function handleAddandOpenCart() {
     setIsCartOpen(true)
-    handleAddProduct(product)
+    handleAddProduct(productItem)
   }
 
   return (
     <div className="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden hover:scale-105 transition-all duration-300 ease-linear">
       <div className="flex items-end justify-end h-56 w-full bg-cover"
         style={{
-          backgroundImage: `url(${image})`
+          backgroundImage: `url(${product.image})`
         }}
       >
         <Tooltip text="Adicionar">
@@ -31,7 +31,7 @@ export function ProductItem({ id, image, name, price, handleAddProduct, descript
           </button>
         </Tooltip>
         <Tooltip text="Detalhe">
-          <button onClick={() => handleOpenDetail(product)} className="p-2 rounded-full bg-blue-600 text-white mx-2 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+          <button onClick={() => handleOpenDetail(productItem)} className="p-2 rounded-full bg-blue-600 text-white mx-2 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
               <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
             </svg>
@@ -40,8 +40,8 @@ export function ProductItem({ id, image, name, price, handleAddProduct, descript
 
       </div>
       <div className="px-5 py-3">
-        <h3 className="text-gray-700 uppercase">{name}</h3>
-        <span className="text-gray-500 mt-2">R$ {price}</span>
+        <h3 className="text-gray-700 uppercase">{product.title}</h3>
+        <span className="text-gray-500 mt-2">R$ {product.price}</span>
       </div>
     </div>
   )
