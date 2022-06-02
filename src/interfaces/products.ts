@@ -26,7 +26,7 @@ export interface IProductItem {
 
 export interface ICartItem {
   id: number
-  name?: string
+  title?: string
   quantity: number,
   price: number
   image: string

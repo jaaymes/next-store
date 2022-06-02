@@ -1,6 +1,5 @@
 import { useCart } from "@hooks/useCart"
 import { ICartItem } from "@interfaces/products";
-import { useEffect } from "react";
 
 interface ICart {
   cartItems: ICartItem[]

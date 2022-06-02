@@ -15,9 +15,12 @@ export function ModalProduct({ open, setOpen, handleAddProduct }: IModalProduct)
     setOpen(false)
     handleAddProduct(product)
   }
+  function closeModal() {
+    setOpen(!open)
+  }
 
   return (
-    <div className={`${!open && 'hidden'} main-modal fixed w-full h-100 inset-0 z-50 overflow-hidden flex justify-center items-center animated fadeIn faster`}
+    <div data-testid="modal" className={`${!open && 'hidden'} main-modal fixed w-full h-100 inset-0 z-50 overflow-hidden flex justify-center items-center animated fadeIn faster`}
       style={{
         background: "rgba(0,0,0,0.7)"
       }}>
@@ -26,8 +29,8 @@ export function ModalProduct({ open, setOpen, handleAddProduct }: IModalProduct)
         <div className="modal-content py-4 text-left px-6">
           {/* <!--Title--> */}
           <div className="flex justify-between items-center pb-3">
-            <p className="text-2xl font-bold">{product?.name}</p>
-            <div onClick={() => setOpen(!open)} className="modal-close cursor-pointer z-50">
+            <p data-testid="title" className="text-2xl font-bold">{product?.title}</p>
+            <div data-testid="open-modal" onClick={closeModal} className="modal-close cursor-pointer z-50">
               <svg className="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
                 viewBox="0 0 18 18">
                 <path
@@ -38,19 +41,22 @@ export function ModalProduct({ open, setOpen, handleAddProduct }: IModalProduct)
           </div>
           <div className="flex w-full items-center justify-center">
             <img
+              data-testid="image"
               className="h-40 w-40 object-cover rounded"
-              src={product?.image} alt={product?.name} />
+              src={product?.image} alt={product?.title} />
           </div>
           {/* <!--Body--> */}
-          <div className="my-5">
+          <div data-testid="description" className="my-5">
             <p>{product?.description}</p>
           </div>
           {/* <!--Footer--> */}
           <div className="flex justify-end pt-2">
             <button
+              data-testid="close"
               onClick={() => setOpen(!open)}
               className="focus:outline-none modal-close px-4 bg-gray-400 p-3 rounded-lg text-black hover:bg-gray-300">Fechar</button>
             <button
+              data-testid="AddAndClose"
               onClick={handleAddAndClose}
               className="focus:outline-none px-4 bg-blue-600 p-3 ml-3 rounded-lg text-white hover:bg-teal-400">Adicionar</button>
           </div>

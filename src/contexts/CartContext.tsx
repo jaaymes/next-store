@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react"
+import { SetStateAction, useState } from "react"
 import { createContext } from 'use-context-selector'
 
 interface CartContextType {
   isOpenCard: boolean
-  setIsCartOpen: React.Dispatch<React.SetStateAction<boolean>>
+  setIsCartOpen: React.Dispatch<SetStateAction<boolean>>
   count: number
-  setCount: React.Dispatch<React.SetStateAction<number>>
+  setCount: React.Dispatch<SetStateAction<number>>
 }
 
 

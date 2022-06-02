@@ -21,19 +21,19 @@ export function Paginate({ nextPage, prevPage, totalPages, setPage, page }: IPag
       <li>
         {
           // @ts-ignore
-          [...Array(totalPages).keys()].map(el => {
+          [...Array(totalPages).keys()].map(item => {
             return (
               <a
-                key={el}
-                onClick={() => setPage(el + 1)}
+                key={item}
+                onClick={() => setPage(item + 1)}
                 className={
                   `py-2 px-3 
                 leading-tight
-                ${page === el + 1 ? "text-blue-600 bg-blue-50" : "text-gray-500bg-white"}
+                ${page === item + 1 && "text-blue-600 bg-blue-50"}
                 border border-gray-300
               hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400
                 dark:hover:bg-gray-700 dark:hover:text-white`}
-              >{el + 1}</a>
+              >{item + 1}</a>
             )
           })
         }
