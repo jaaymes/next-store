@@ -12,16 +12,6 @@ export const useCart = () => {
     cart => cart.setIsCartOpen
   )
 
-  const count = useContextSelector(
-    CartContext,
-    cart => cart.isOpenCard
-  )
-
-  const setCount = useContextSelector(
-    CartContext,
-    cart => cart.setIsCartOpen
-  )
-
   return {
     isOpenCard,
     setIsCartOpen
